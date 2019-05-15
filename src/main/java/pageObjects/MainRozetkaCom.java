@@ -30,24 +30,30 @@ public class MainRozetkaCom {
 
     public  MainRozetkaCom openSmartphonesMenu(){
         MainActions mainActions = new MainActions();
-        tlsSender.send("This is Subject", "TLS: This is text!", "support@devcolibri.com", "tester235386@gmail.com");
 
         telephoneAndElectronics.shouldBe(Condition.enabled).click();
         telephones.shouldBe(Condition.enabled).click();
         smartphones.shouldBe(Condition.enabled).click();
-        mainActions.writerFile(  "Page1 ", nameModels, "nameModels.txt");
+        mainActions.writerFile(  "Page1 ", nameModels, "files\\nameModels.txt");
         mainActions.scrollToElement(page2);
 
         page2.click();
         sleep(4000);
-        mainActions.writerFile("Page2 ",nameModels, "nameModels.txt");
+        mainActions.writerFile("Page2 ",nameModels, "files\\nameModels.txt");
         mainActions.scrollToElement(page3);
 
         page3.click();
         sleep(4000);
-        mainActions.writerFile("Page3 ",nameModels, "nameModels.txt");
+        mainActions.writerFile("Page3 ",nameModels, "files\\nameModels.txt");
 
         return new MainRozetkaCom();
+    }
+
+    public void sendToEmail(){
+
+        tlsSender.send("This is Subject", "Hello!!!!", "tester235386@gmail.com", "tester235386@gmail.com", "files\\nameModels.txt");
+
+
     }
 
 
