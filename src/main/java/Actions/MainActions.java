@@ -15,7 +15,6 @@ public class MainActions {
         //WebDriverWait wait = new WebDriverWait(getWebDriver(), 20);
 
         try {
-
             BufferedWriter writer = new BufferedWriter(new FileWriter(nameFile, true));
             writer.write(numberPage + ": " +nameModel.texts() + "\n");
             writer.flush();
