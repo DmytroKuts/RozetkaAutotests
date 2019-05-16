@@ -10,19 +10,16 @@ import java.util.Scanner;
 
 public class ParserFiles {
 
-    public ArrayList<String> parser() {
+    public List<String> parser() {
+        List<String> listOfLines = new ArrayList<>();
         try (
                 FileReader fr = new FileReader("files\\recipientsEmails.txt");
                 Scanner scan = new Scanner(fr)
         ) {
-
-            ArrayList<String> listOfLines = new ArrayList<>();
             int i = 1;
             while (scan.hasNextLine()) {
                 listOfLines.add(scan.nextLine());
-                System.out.println(listOfLines);
                 i++;
-
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
