@@ -2,11 +2,14 @@ package Actions;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import javafx.util.Pair;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -56,7 +59,7 @@ public class MainActions {
     }
 
     public void insertElementsCollectionToDB(String page, int countPages, ElementsCollection price, ElementsCollection nameModels) {
-        RecordToDB recordToDB =new RecordToDB();
+        RecordToDB recordToDB = new RecordToDB();
 
         for (int i = 1; i <= countPages; i++) {
             if (i != 1) {
@@ -71,7 +74,7 @@ public class MainActions {
                 sleep(4000);
                 for (int c = 0; c < price.size(); c++) {
                     recordToDB.insertDBNamemodelsPrice(
-                            price.get(c).getText(),nameModels.get(c).getText());
+                            price.get(c).getText(), nameModels.get(c).getText());
                 }
             }
         }
@@ -86,9 +89,25 @@ public class MainActions {
         }
     }
 
-    public  List<String> joinList(){
-        List<java.lang.String> listOfLines = new ArrayList<>();
+    public List<Pair<String, Integer>> joinList(ElementsCollection collectionInt, ElementsCollection collectionString) {
+        List<Pair<String, Integer>> listPairs = new ArrayList<>();
 
-        return listOfLines;
+//        int size = Math.min(collectionInt.size(), collectionString.size());
+        for (int i = 0; i < collectionString.size(); i++) {
+            Pair<String, Integer> pair = new Pair<>(collectionString.get(i).getText(), Integer.parseInt(collectionInt.get(i).text().substring(0, collectionInt.get(i).text().length() -4).replaceAll("\\s","")));
+            listPairs.add(pair);
+        }
+        return listPairs;
     }
+
+    public void sortJoinList(List<Pair<String, Integer>> pairList) {
+        Collections.sort(pairList, new Comparator<Pair<String, Integer>>() {
+            @Override
+            public int compare(Pair<String, Integer> o1, Pair<String, Integer> o2) {
+                return o1.getValue().compareTo(o2.getValue());
+            }
+        });
+    }
+
+
 }

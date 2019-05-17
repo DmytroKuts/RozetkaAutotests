@@ -7,8 +7,13 @@ import static com.codeborne.selenide.Selenide.open;
 public class AllTests extends MainTest{
     @Before
     public  void BeforeMethod() {
+
         open("https://rozetka.com.ua/");
+
         Configuration.holdBrowserOpen = true;
+
+        mainRozetkaCom.openSmartphonesMenu();
+        mainRozetkaCom.joinNamePrice();
     }
 
     @Test
