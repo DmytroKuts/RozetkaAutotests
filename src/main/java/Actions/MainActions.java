@@ -89,13 +89,27 @@ public class MainActions {
         }
     }
 
-    public List<Pair<String, Integer>> joinList(ElementsCollection collectionInt, ElementsCollection collectionString) {
+    public List<Pair<String, Integer>> joinList(Integer countPages,ElementsCollection collectionInt, ElementsCollection collectionString) {
         List<Pair<String, Integer>> listPairs = new ArrayList<>();
 
-//        int size = Math.min(collectionInt.size(), collectionString.size());
-        for (int i = 0; i < collectionString.size(); i++) {
-            Pair<String, Integer> pair = new Pair<>(collectionString.get(i).getText(), Integer.parseInt(collectionInt.get(i).text().substring(0, collectionInt.get(i).text().length() -4).replaceAll("\\s","")));
-            listPairs.add(pair);
+        for (int i = 1; i <= countPages; i++) {
+            if (i != 1) {
+                scrollToElement(returnId("page", i));
+                returnId("page", i).click();
+                sleep(4000);
+
+                for (int i2 = 0; i2 < collectionString.size(); i2++) {
+                    Pair<String, Integer> pair = new Pair<>(collectionString.get(i2).getText(), Integer.parseInt(collectionInt.get(i2).text().substring(0, collectionInt.get(i2).text().length() - 4).replaceAll("\\s", "")));
+                    listPairs.add(pair);
+
+                }
+            } else {
+                sleep(4000);
+                for (int i2 = 0; i2 < collectionString.size(); i2++) {
+                    Pair<String, Integer> pair = new Pair<>(collectionString.get(i2).getText(), Integer.parseInt(collectionInt.get(i2).text().substring(0, collectionInt.get(i2).text().length() - 4).replaceAll("\\s", "")));
+                    listPairs.add(pair);
+                }
+            }
         }
         return listPairs;
     }

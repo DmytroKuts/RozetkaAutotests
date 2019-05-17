@@ -55,7 +55,7 @@ public class MainRozetkaCom {
     public void joinNamePrice(){
         MainActions mainActions = new MainActions();
         List<Pair<String, Integer>> listPairs ;
-        listPairs = mainActions.joinList(priceSmartphonesTopSales, nameModelsSmartphonesTopSales);
+        listPairs = mainActions.joinList(3, priceSmartphonesTopSales, nameModelsSmartphonesTopSales);
         for (Pair<String, Integer> element:listPairs) {
             System.out.println(element);
         }
