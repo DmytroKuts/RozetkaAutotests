@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -54,13 +55,40 @@ public class MainActions {
         }
     }
 
+    public void insertElementsCollectionToDB(String page, int countPages, ElementsCollection price, ElementsCollection nameModels) {
+        RecordToDB recordToDB =new RecordToDB();
+
+        for (int i = 1; i <= countPages; i++) {
+            if (i != 1) {
+                scrollToElement(returnId(page, i));
+                returnId(page, i).click();
+                sleep(4000);
+                for (int c = 0; c < price.size(); c++) {
+                    recordToDB.insertDBNamemodelsPrice(
+                            price.get(c).getText(), nameModels.get(c).getText());
+                }
+            } else {
+                sleep(4000);
+                for (int c = 0; c < price.size(); c++) {
+                    recordToDB.insertDBNamemodelsPrice(
+                            price.get(c).getText(),nameModels.get(c).getText());
+                }
+            }
+        }
+    }
+
     public void sendToEmail() {
         ParserFiles parserFiles = new ParserFiles();
         List<String> listOfLines = parserFiles.parser();
-        System.out.println(listOfLines.size() + " " + listOfLines.get(1));
         for (int i = 0; i < listOfLines.size(); i++) {
             tlsSender.send("This is Subject", "Hello!!!!", "tester235386@gmail.com", listOfLines.get(i), "files\\nameModels.txt");
 
         }
+    }
+
+    public  List<String> joinList(){
+        List<java.lang.String> listOfLines = new ArrayList<>();
+
+        return listOfLines;
     }
 }
