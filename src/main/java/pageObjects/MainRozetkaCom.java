@@ -27,9 +27,12 @@ public class MainRozetkaCom {
     private ElementsCollection nameModelsSmartphonesTopSales = $$x("//i[@class='g-tag-icon-small-popularity g-tag-i sprite']/ancestor::div[3]/following-sibling::div[@class='g-i-tile-i-title clearfix']");
     private ElementsCollection priceSmartphonesTopSales =  $$x("//i[@class='g-tag-icon-small-popularity g-tag-i sprite']/ancestor::div[3]/following-sibling::div[@name='prices_active_element_original']//div[@class='g-price-uah']");
     private String page = "page";
+    private ElementsCollection priceSmatrphones =  $$x("//div[@class='g-i-tile-i-box-desc']//div[@name='price']//div[@class='g-price-uah' and ( number(translate(text(), ' ', '')) >3000 and number(translate(text(), ' ', '')) <6000)]");
+    private ElementsCollection nameModelSmatrphones =  $$x("//div[@class='g-i-tile-i-box-desc']//div[@name='price']//div[@class='g-price-uah' and ( number(translate(text(), ' ', '')) >3000 and number(translate(text(), ' ', '')) <6000)]/ancestor::div[3]/preceding-sibling::div[@class='g-i-tile-i-title clearfix']");
+
 
     public  void openSmartphonesMenu(){
-        ruLocation.waitUntil(Condition.enabled,5000,5000).click();
+        ruLocation.waitUntil(Condition.enabled,50,50).click();
         telephoneAndElectronicsMenu.shouldBe(Condition.enabled).click();
         telephonesMenu.shouldBe(Condition.enabled).click();
         smartphonesMenu.shouldBe(Condition.enabled).click();
@@ -54,11 +57,19 @@ public class MainRozetkaCom {
 
     public void joinNamePrice(){
         MainActions mainActions = new MainActions();
-        List<Pair<String, Integer>> listPairs ;
-        listPairs = mainActions.joinList(3, priceSmartphonesTopSales, nameModelsSmartphonesTopSales);
-        for (Pair<String, Integer> element:listPairs) {
+        List<Pair<String, Integer>> listPairs1 ;
+        List<Pair<String, Integer>> listPairs2 ;
+        listPairs1 = mainActions.joinList(3, priceSmartphonesTopSales, nameModelsSmartphonesTopSales);
+        listPairs2 = mainActions.joinList(5, priceSmatrphones, nameModelSmatrphones);
+        listPairs1.addAll(listPairs2);
+        mainActions.sortJoinList(listPairs1);
+
+        for (Pair<String, Integer> element:listPairs1) {
             System.out.println(element);
         }
+       /* for (Pair<String, Integer> element:listPairs2) {
+            System.out.println(element);
+        }*/
       }
 
 

@@ -96,7 +96,7 @@ public class MainActions {
             if (i != 1) {
                 scrollToElement(returnId("page", i));
                 returnId("page", i).click();
-                sleep(4000);
+                sleep(5000);
 
                 for (int i2 = 0; i2 < collectionString.size(); i2++) {
                     Pair<String, Integer> pair = new Pair<>(collectionString.get(i2).getText(), Integer.parseInt(collectionInt.get(i2).text().substring(0, collectionInt.get(i2).text().length() - 4).replaceAll("\\s", "")));
@@ -111,6 +111,8 @@ public class MainActions {
                 }
             }
         }
+        scrollToElement(returnId("page", 1));
+        returnId("page", 1).click();
         return listPairs;
     }
 
