@@ -5,12 +5,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import javafx.util.Pair;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-
 import static com.codeborne.selenide.Selenide.*;
 
 public class MainRozetkaCom {
@@ -55,22 +50,16 @@ public class MainRozetkaCom {
         mainActions.insertElementsCollectionToDB(page, 5, pricePowder, namePowder);
     }
 
-    public void joinNamePrice(){
+    public List<Pair<String, Integer>>  chooseNameModelPriceSmartphones(){
         MainActions mainActions = new MainActions();
         List<Pair<String, Integer>> listPairs1 ;
         List<Pair<String, Integer>> listPairs2 ;
+
         listPairs1 = mainActions.joinList(3, priceSmartphonesTopSales, nameModelsSmartphonesTopSales);
         listPairs2 = mainActions.joinList(5, priceSmatrphones, nameModelSmatrphones);
+
         listPairs1.addAll(listPairs2);
-        mainActions.sortJoinList(listPairs1);
+        return listPairs1 ;
 
-        for (Pair<String, Integer> element:listPairs1) {
-            System.out.println(element);
         }
-       /* for (Pair<String, Integer> element:listPairs2) {
-            System.out.println(element);
-        }*/
-      }
-
-
 }

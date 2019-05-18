@@ -1,15 +1,12 @@
 package Actions;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 
 public class ParserFiles {
-
     public List<String> parser() {
         List<String> listOfLines = new ArrayList<>();
         try (
@@ -28,8 +25,7 @@ public class ParserFiles {
         }
         return listOfLines;
     }
-
 }
 
 
-//String[] fields = line.split(",");
+

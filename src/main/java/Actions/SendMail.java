@@ -48,7 +48,6 @@ public class SendMail {
             mmp.addBodyPart(mbr);
             message.setContent(mmp);
 
-
             //отправляем сообщение
             Transport.send(message);
         } catch (MessagingException e) {
