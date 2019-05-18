@@ -10,7 +10,7 @@ public class ParserFiles {
     public List<String> parser() {
         List<String> listOfLines = new ArrayList<>();
         try (
-                FileReader fr = new FileReader("files\\recipientsEmails.txt");
+                FileReader fr = new FileReader("fi les\\recipientsEmails.txt");
                 Scanner scan = new Scanner(fr)
         ) {
             int i = 1;
