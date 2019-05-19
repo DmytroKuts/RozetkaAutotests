@@ -7,6 +7,11 @@
     <groupId>com.rozetka</groupId>
     <artifactId>com.rozetka</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -36,6 +41,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M3</version>
                 <configuration>
+                    <argLine>-Dfile.encoding=UTF-8</argLine>
                     <includes>
                         <include>*Tests.java</include>
                     </includes>
