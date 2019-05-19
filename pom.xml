@@ -23,7 +23,6 @@
                 </configuration>
             </plugin>
 
-            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -36,6 +35,19 @@
                     <systemPropertyVariables>
                         <application.properties>/application.properties</application.properties>
                     </systemPropertyVariables>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <includes>
+                        <include>*Test.java</include>
+                    </includes>
                 </configuration>
             </plugin>
 
