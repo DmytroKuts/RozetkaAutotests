@@ -10,13 +10,13 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class MainRozetkaCom {
     private SelenideElement ruLocation =  $x("//li[@class='header-topline__language-item']//span[text()=' RU ']");
-    private SelenideElement telephoneAndElectronicsMenu =  $x("//a[@class='menu-categories__link' and text() = 'Смартфоны, ТВ и электроника']");
-    private SelenideElement telephonesMenu =  $x("//a[@class='m-cat-l-i-title-link' and text() = 'Телефоны']");
-    private SelenideElement smartphonesMenu =  $x("//a[@class='m-cat-l-i-title-link' and text() = 'Смартфоны']");
+    private SelenideElement telephoneAndElectronicsMenu =  $x("//ul[@class='menu-categories menu-categories_type_main']/li[2]");
+    private SelenideElement telephonesMenu =  $x("//ul[@class='m-cat-l']/li[1]//a");
+    private SelenideElement smartphonesMenu =  $x("//li[@class='m-cat-l-i m-cat-l-i-roll'][@param = 63304]/div[1]/a[1]");
     private ElementsCollection nameModelsSmartphones = $$x("//div[@class='g-i-tile-i-title clearfix']");
-    private SelenideElement householdProduct =  $x("//a[@class='menu-categories__link' and text() = 'Товары для дома']");
-    private SelenideElement householdChemicals =  $x("//a[@class='m-cat-l-i-title-link' and text() = 'Бытовая химия']");
-    private SelenideElement powder =  $x("//a[text()='Порошок']");
+    private SelenideElement householdProduct =  $x("//ul[@class='menu-categories menu-categories_type_main']/li[4]");
+    private SelenideElement householdChemicals =  $x("//ul[@class='m-cat-l']/li[7]//a");
+    private SelenideElement powder =  $x("//ul[@class='m-cat-subl']/li[1]//a");
     private ElementsCollection namePowder =  $$x("//div[@name='catalog_item_block']//div[@class='g-price-uah' and ( number(text()) > 100 and number(text()) < 300 )]/ancestor::div[3]/preceding-sibling::div[@class='g-i-tile-i-title clearfix']");
     private ElementsCollection pricePowder =  $$x("//div[@name='catalog_item_block']//div[@class='g-price-uah' and ( number(text()) > 100 and number(text()) < 300 )]");
     private ElementsCollection nameModelsSmartphonesTopSales = $$x("//i[@class='g-tag-icon-small-popularity g-tag-i sprite']/ancestor::div[3]/following-sibling::div[@class='g-i-tile-i-title clearfix']");
