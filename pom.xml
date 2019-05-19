@@ -28,7 +28,6 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M3</version>
                 <configuration>
-                    <argLine>-Dfile.encoding=UTF-8</argLine>
                     <includes>
                         <include>*Tests.java</include>
                     </includes>
@@ -45,9 +44,6 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
-                    <includes>
-                        <include>*Test.java</include>
-                    </includes>
                 </configuration>
             </plugin>
 
@@ -55,12 +51,6 @@
     </build>
 
     <dependencies>
-        <dependency>
-            <groupId>org.apache.maven.surefire</groupId>
-            <artifactId>surefire-junit47</artifactId>
-            <version>3.0.0-M3</version>
-        </dependency>
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
