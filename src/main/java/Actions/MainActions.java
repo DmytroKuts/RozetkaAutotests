@@ -5,11 +5,13 @@ import com.codeborne.selenide.SelenideElement;
 import javafx.util.Pair;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
@@ -37,7 +39,7 @@ public class MainActions {
     }
 
     public void writeToFileNameModels(String page, int countPages, ElementsCollection nameModels, String nameFile) {
-        for (int i = 1; i <= countPages; i++) {
+        for (int i = 1; i <= countPages; i++) {          // Passsage through the pages/ i = page
             if (i != 1) {
                 scrollToElement(returnId(page, i));
                 returnId(page, i).click();
@@ -52,9 +54,9 @@ public class MainActions {
 
     public void insertElementsCollectionToDB(String page, int countPages, ElementsCollection price, ElementsCollection nameModels) {
         RecordToDB recordToDB = new RecordToDB();
-        Integer size = Math.min(nameModels.size(),price.size());
+        Integer size = Math.min(nameModels.size(), price.size());
 
-        for (int i = 1; i <= countPages; i++) {
+        for (int i = 1; i <= countPages; i++) {  // Passsage through the pages/ i = page
             if (i != 1) {
                 scrollToElement(returnId(page, i));
                 returnId(page, i).click();
@@ -82,7 +84,8 @@ public class MainActions {
         }
     }
 
-    public List<Pair<String, Integer>> joinList(Integer countPages,ElementsCollection collectionInt, ElementsCollection collectionString) {
+    //// To merge the two collection into Pair<String, Integer>
+    public List<Pair<String, Integer>> joinList(Integer countPages, ElementsCollection collectionInt, ElementsCollection collectionString) {
         List<Pair<String, Integer>> listPairs = new ArrayList<>();
         for (int i = 1; i <= countPages; i++) {
             if (i != 1) {
@@ -91,13 +94,13 @@ public class MainActions {
                 sleep(5000);
 
                 for (int i2 = 0; i2 < collectionString.size(); i2++) {
-                    Pair<String, Integer> pair = new Pair<>(collectionString.get(i2).getText(), Integer.parseInt(collectionInt.get(i2).text().substring(0, collectionInt.get(i2).text().length() - 4).replaceAll("\\s", "")));
+                    Pair<String, Integer> pair = new Pair<>(collectionString.get(i2).getText(), Integer.parseInt(collectionInt.get(i2).text().substring(0, collectionInt.get(i2).text().length() - 4).replaceAll("\\s", "")));  //Cut out ' грн'
                     listPairs.add(pair);
                 }
             } else {
                 sleep(4000);
                 for (int i2 = 0; i2 < collectionString.size(); i2++) {
-                    Pair<String, Integer> pair = new Pair<>(collectionString.get(i2).getText(), Integer.parseInt(collectionInt.get(i2).text().substring(0, collectionInt.get(i2).text().length() - 4).replaceAll("\\s", "")));
+                    Pair<String, Integer> pair = new Pair<>(collectionString.get(i2).getText(), Integer.parseInt(collectionInt.get(i2).text().substring(0, collectionInt.get(i2).text().length() - 4).replaceAll("\\s", "")));  //Cut out ' грн'
                     listPairs.add(pair);
                 }
             }

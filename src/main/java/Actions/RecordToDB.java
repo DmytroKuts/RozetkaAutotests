@@ -1,7 +1,4 @@
 package Actions;
-
-
-
 import java.sql.*;
 
 public class RecordToDB {

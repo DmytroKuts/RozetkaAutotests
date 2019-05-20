@@ -5,11 +5,10 @@ import org.junit.Test;
 import java.util.List;
 import static com.codeborne.selenide.Selenide.open;
 
-public class AllTests extends MainTest{
+public class AllTests extends MainTest {
     @Before
-    public  void BeforeMethod() {
-        Configuration.startMaximized=true;
-        Configuration.holdBrowserOpen = true;
+    public void BeforeMethod() {
+        Configuration.startMaximized = true;
         open("https://rozetka.com.ua/");
     }
 
@@ -29,7 +28,7 @@ public class AllTests extends MainTest{
     @Test
     public void testScript_3() {
         mainRozetkaCom.openSmartphonesMenu();
-        List<Pair<String, Integer>>nameModelPriceSmartphones = mainRozetkaCom.chooseNameModelPriceSmartphones();
+        List<Pair<String, Integer>> nameModelPriceSmartphones = mainRozetkaCom.chooseNameModelPriceSmartphones();  // Get a pair name models and price smartphones
         mainActions.sortPairsList(nameModelPriceSmartphones);
         recordToExcel.recordToExcel(nameModelPriceSmartphones);
         mainActions.sendToEmail("files\\SmartphonesNamePrice.xls");

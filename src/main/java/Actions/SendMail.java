@@ -35,20 +35,20 @@ public class SendMail {
         try {
             Multipart mmp = new MimeMultipart();
             MimeMessage message = new MimeMessage(session);
-            //от кого
+            // From
             message.setFrom(new InternetAddress(fromEmail));
-            //кому
+            //To
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
-            //тема сообщения
+            //Subject
             message.setSubject(subject);
-            //текст
+            //Texr
             message.setText(text);
-            // вложение
+            // Attachment
             MimeBodyPart mbr = createFileAttachment(filepath);
             mmp.addBodyPart(mbr);
             message.setContent(mmp);
 
-            //отправляем сообщение
+            //Send email
             Transport.send(message);
         } catch (MessagingException e) {
             throw new RuntimeException(e);
@@ -58,7 +58,7 @@ public class SendMail {
             throws MessagingException
     {
         MimeBodyPart mbp = new MimeBodyPart();
-        // Определение файла в качестве контента
+        // File content
         FileDataSource fds = new FileDataSource(filepath);
         mbp.setDataHandler(new DataHandler(fds));
         mbp.setFileName(fds.getName());
